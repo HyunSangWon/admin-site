@@ -1,0 +1,42 @@
+spring:
+   profiles:   
+      active: dev
+   
+   thymeleaf:
+      cache: false
+      mode: HTML      
+---
+spring:
+    profiles: dev
+     
+    devtools:
+       livereload:
+         enabled: true
+       restart:
+         enabled: true
+      
+    server:
+       port: 8080
+       
+google:
+  recaptcha:
+    key:
+      site: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+      secret: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+      url: https://www.google.com/recaptcha/api/siteverify
+---
+spring:
+   profiles: env
+   
+   server:
+      port: 8080       
+      servlet: 
+         session: 
+            timeout: 600s
+            
+google:
+  recaptcha:
+    key:
+      site: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+      secret: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+      url: https://www.google.com/recaptcha/api/siteverify            
