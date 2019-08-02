@@ -11,6 +11,12 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.net.ssl.HttpsURLConnection;
 
+import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +70,41 @@ public class HomeService {
 			return false;
 		}
 
+	}
+	
+	
+	/**
+	 * @param workbook
+	 * @param layout
+	 * @return
+	 */
+	public CellStyle excelStyle(Workbook workbook,String layout){
+
+		CellStyle cellStyle = null;
+
+		if(layout.equals("head")){
+			CellStyle headStyle = workbook.createCellStyle();//테이블 헤더 스타일
+			// 가는 경계선을 가집니다.
+			cellStyle.setBorderTop(BorderStyle.THIN);
+			cellStyle.setBorderBottom(BorderStyle.THIN);
+			cellStyle.setBorderLeft(BorderStyle.THIN);
+			cellStyle.setBorderRight(BorderStyle.THIN);
+
+			// 배경색은 노란색입니다.
+			cellStyle.setFillForegroundColor(HSSFColorPredefined.YELLOW.getIndex());
+			cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+			// 데이터는 가운데 정렬합니다.
+			cellStyle.setAlignment(HorizontalAlignment.CENTER);
+			return cellStyle;
+		}else{
+			cellStyle = workbook.createCellStyle();
+			cellStyle.setBorderTop(BorderStyle.THIN);
+			cellStyle.setBorderBottom(BorderStyle.THIN);
+			cellStyle.setBorderLeft(BorderStyle.THIN);
+			cellStyle.setBorderRight(BorderStyle.THIN);
+			return cellStyle;
+		}
 	}
 	
 }//end class
