@@ -1,3 +1,7 @@
+application:
+   version: v1.0.0
+   title: amdin-site
+   
 spring:
    profiles:   
       active: dev
